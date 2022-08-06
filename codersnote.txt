@@ -1,0 +1,6 @@
+Weather App
+-change to celcius button
+-change flag to country 
+-change background with weather
+-Error when no city is changed
+-clean up code
