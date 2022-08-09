@@ -14,22 +14,58 @@ function App() {
         setData(response.data)
         console.log(response.data)
         console.log(response.data.sys.country + " => this is the selected country")
-
       }
       )
     }
   }
+ 
+   
+  /////////////////////////////// Country/City Specific Emojis
+  function Flag(props) {
+   let targetCountry = props.country 
 
+    if (targetCountry === "US") {
+      switch(data.name) {
+        case "New York":
+          return (
+          <h1>🗽</h1>
+          )
+          break;
+          case "Miami":
+            return (
+            <h1>⛱️</h1>
+            )
+            break;
+        default:
+          console.log("DEFAULT")
+      }
+    }
+    if (targetCountry=== null){
+      return (
+        <div>
+        <h1> Weather Radar </h1>
+        <h1> Realtime Weather from Across The Globe</h1>
+      </div>
+      )
+    }
+  }
+
+  const countryFind= <Flag country={data.sys ? data.sys.country : null}/>;
+  ////////////////
+
+
+
+  //////////////
   return (
     <div className="App">
-
+     {countryFind}
       <div className="location">
         <h1>{data.name}</h1>
         {data.sys ? <h1>{data.sys.country}</h1> : null}
       </div>
 
       <div className="temp">
-        {data.main ? <h1>{data.main.temp.toFixed()}°F</h1> : null}
+       <h3>{data.main ? <h1>{data.main.temp.toFixed()}°F</h1> : null}</h3>
       </div>
       <div className="details">
 
